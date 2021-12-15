@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB565382276A67FB00003D21 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB565381276A67FB00003D21 /* UILabelExtensions.swift */; };
+		CB565384276A690300003D21 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB565383276A690300003D21 /* UITextFieldExtensions.swift */; };
 		CBF53FC32768F879001F99D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC22768F879001F99D8 /* AppDelegate.swift */; };
 		CBF53FC52768F879001F99D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC42768F879001F99D8 /* SceneDelegate.swift */; };
-		CBF53FC72768F879001F99D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC62768F879001F99D8 /* ViewController.swift */; };
+		CBF53FC72768F879001F99D8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC62768F879001F99D8 /* SignInViewController.swift */; };
 		CBF53FCA2768F879001F99D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF53FC82768F879001F99D8 /* Main.storyboard */; };
 		CBF53FCC2768F87B001F99D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF53FCB2768F87B001F99D8 /* Assets.xcassets */; };
 		CBF53FCF2768F87B001F99D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF53FCD2768F87B001F99D8 /* LaunchScreen.storyboard */; };
+		CBF53FD8276907CA001F99D8 /* BirthdayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FD7276907CA001F99D8 /* BirthdayListViewController.swift */; };
+		CBF53FDA27690850001F99D8 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FD927690850001F99D8 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB565381276A67FB00003D21 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		CB565383276A690300003D21 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		CBF53FBF2768F879001F99D8 /* BirthdayReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF53FC22768F879001F99D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF53FC42768F879001F99D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBF53FC62768F879001F99D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBF53FC62768F879001F99D8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CBF53FC92768F879001F99D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBF53FCB2768F87B001F99D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBF53FCE2768F87B001F99D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBF53FD02768F87B001F99D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBF53FD7276907CA001F99D8 /* BirthdayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayListViewController.swift; sourceTree = "<group>"; };
+		CBF53FD927690850001F99D8 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB565385276A697800003D21 /* UIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				CB565383276A690300003D21 /* UITextFieldExtensions.swift */,
+				CB565381276A67FB00003D21 /* UILabelExtensions.swift */,
+			);
+			path = UIExtensions;
+			sourceTree = "<group>";
+		};
+		CB565386276A71BC00003D21 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CBF53FC62768F879001F99D8 /* SignInViewController.swift */,
+				CBF53FD927690850001F99D8 /* EditViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		CBF53FB62768F879001F99D8 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +82,25 @@
 		CBF53FC12768F879001F99D8 /* BirthdayReminder */ = {
 			isa = PBXGroup;
 			children = (
-				CBF53FC22768F879001F99D8 /* AppDelegate.swift */,
-				CBF53FC42768F879001F99D8 /* SceneDelegate.swift */,
-				CBF53FC62768F879001F99D8 /* ViewController.swift */,
+				CB565386276A71BC00003D21 /* ViewControllers */,
+				CBF53FD7276907CA001F99D8 /* BirthdayListViewController.swift */,
 				CBF53FC82768F879001F99D8 /* Main.storyboard */,
 				CBF53FCB2768F87B001F99D8 /* Assets.xcassets */,
 				CBF53FCD2768F87B001F99D8 /* LaunchScreen.storyboard */,
 				CBF53FD02768F87B001F99D8 /* Info.plist */,
+				CBF53FD62768F89B001F99D8 /* SupportingFiles */,
+				CB565385276A697800003D21 /* UIExtensions */,
 			);
 			path = BirthdayReminder;
+			sourceTree = "<group>";
+		};
+		CBF53FD62768F89B001F99D8 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				CBF53FC42768F879001F99D8 /* SceneDelegate.swift */,
+				CBF53FC22768F879001F99D8 /* AppDelegate.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBF53FC72768F879001F99D8 /* ViewController.swift in Sources */,
+				CBF53FDA27690850001F99D8 /* EditViewController.swift in Sources */,
+				CBF53FC72768F879001F99D8 /* SignInViewController.swift in Sources */,
+				CB565382276A67FB00003D21 /* UILabelExtensions.swift in Sources */,
 				CBF53FC32768F879001F99D8 /* AppDelegate.swift in Sources */,
+				CBF53FD8276907CA001F99D8 /* BirthdayListViewController.swift in Sources */,
+				CB565384276A690300003D21 /* UITextFieldExtensions.swift in Sources */,
 				CBF53FC52768F879001F99D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
