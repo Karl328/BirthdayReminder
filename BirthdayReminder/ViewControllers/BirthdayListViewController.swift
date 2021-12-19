@@ -18,7 +18,7 @@ class BirthdayListViewController: UIViewController, BirthdayListViewControllerDe
     
     func addNewContact(currentContact: Contact) {
         contacts.append(currentContact)
-        //TODO: updatedContacts.sorted { $0.name < $1.name }
+        //TODO: updatedContacts.sorted { $0.name < $1.name}
         for view in view.subviews {
             view.removeFromSuperview()
         }
