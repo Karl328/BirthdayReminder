@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LNo-Xf-YaM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="115"/>
+            <point key="canvasLocation" x="1882.608695652174" y="114.50892857142857"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="OQ0-Op-UEn">
@@ -176,6 +176,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Отмена"/>
+                                <connections>
+                                    <action selector="cancelAdding:" destination="u6g-0v-mo2" eventType="touchUpInside" id="2GT-Zq-11d"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aa3-5M-yCy">
                                 <rect key="frame" x="318" y="8" width="76" height="44"/>
@@ -186,6 +189,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Добавить"/>
+                                <connections>
+                                    <action selector="addUser:" destination="u6g-0v-mo2" eventType="touchUpInside" id="dnc-b2-yuT"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="NeK-os-5tl">
                                 <rect key="frame" x="35" y="284" width="344" height="372"/>
@@ -234,6 +240,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="tapOnTxtAge:" destination="u6g-0v-mo2" eventType="touchDown" id="mMv-jN-ZrY"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пол" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ici-Yr-U0P">
                                         <rect key="frame" x="0.0" y="234" width="344" height="17"/>
@@ -249,6 +258,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="tapOnTxtGender:" destination="u6g-0v-mo2" eventType="touchDown" id="B6s-n0-2QE"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yp2-mI-K8u">
                                         <rect key="frame" x="0.0" y="312" width="344" height="17"/>
@@ -264,6 +276,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="showInstagramAlert:" destination="u6g-0v-mo2" eventType="touchDown" id="R1R-KL-NMh"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -301,6 +316,13 @@
                             <constraint firstItem="npE-Et-Wq4" firstAttribute="trailing" secondItem="Aa3-5M-yCy" secondAttribute="trailing" constant="20" id="tbM-Uo-8n3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="txtAge" destination="JrT-un-XQg" id="yxL-lT-1Qh"/>
+                        <outlet property="txtBirthDate" destination="T0B-Zp-bVX" id="fZI-D4-j2y"/>
+                        <outlet property="txtGender" destination="CmF-xQ-IfC" id="pWv-ew-4Mk"/>
+                        <outlet property="txtInstagram" destination="OCi-zs-jr3" id="2R1-lJ-F2C"/>
+                        <outlet property="txtName" destination="zmU-Q9-bWH" id="n1v-Tn-LPe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d38-Qh-kBR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

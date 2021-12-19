@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CB565382276A67FB00003D21 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB565381276A67FB00003D21 /* UILabelExtensions.swift */; };
 		CB565384276A690300003D21 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB565383276A690300003D21 /* UITextFieldExtensions.swift */; };
+		CBDDAFE2276E19A300A5678D /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDAFE1276E19A300A5678D /* Contact.swift */; };
 		CBF53FC32768F879001F99D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC22768F879001F99D8 /* AppDelegate.swift */; };
 		CBF53FC52768F879001F99D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC42768F879001F99D8 /* SceneDelegate.swift */; };
 		CBF53FC72768F879001F99D8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC62768F879001F99D8 /* SignInViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		CB565381276A67FB00003D21 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		CB565383276A690300003D21 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		CBDDAFE1276E19A300A5678D /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		CBF53FBF2768F879001F99D8 /* BirthdayReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF53FC22768F879001F99D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF53FC42768F879001F99D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 		CB565386276A71BC00003D21 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CBF53FD7276907CA001F99D8 /* BirthdayListViewController.swift */,
 				CBF53FC62768F879001F99D8 /* SignInViewController.swift */,
 				CBF53FD927690850001F99D8 /* EditViewController.swift */,
 			);
@@ -83,7 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				CB565386276A71BC00003D21 /* ViewControllers */,
-				CBF53FD7276907CA001F99D8 /* BirthdayListViewController.swift */,
+				CBDDAFE1276E19A300A5678D /* Contact.swift */,
 				CBF53FC82768F879001F99D8 /* Main.storyboard */,
 				CBF53FCB2768F87B001F99D8 /* Assets.xcassets */,
 				CBF53FCD2768F87B001F99D8 /* LaunchScreen.storyboard */,
@@ -178,6 +181,7 @@
 				CBF53FC72768F879001F99D8 /* SignInViewController.swift in Sources */,
 				CB565382276A67FB00003D21 /* UILabelExtensions.swift in Sources */,
 				CBF53FC32768F879001F99D8 /* AppDelegate.swift in Sources */,
+				CBDDAFE2276E19A300A5678D /* Contact.swift in Sources */,
 				CBF53FD8276907CA001F99D8 /* BirthdayListViewController.swift in Sources */,
 				CB565384276A690300003D21 /* UITextFieldExtensions.swift in Sources */,
 				CBF53FC52768F879001F99D8 /* SceneDelegate.swift in Sources */,
