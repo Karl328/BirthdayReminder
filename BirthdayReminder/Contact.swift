@@ -22,7 +22,6 @@ func getElementByRawValue(rawValue: String) -> Gender {
 }
 
 struct Contact {
-    
     var name: String?
     var birthDate: Date?
     var age: Int?
@@ -30,5 +29,4 @@ struct Contact {
     var instagram: String?
     var image: String?
     var identifier: Int
-    
 }
