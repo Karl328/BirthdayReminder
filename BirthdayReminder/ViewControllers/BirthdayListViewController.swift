@@ -14,21 +14,44 @@ protocol BirthdayListViewControllerDelegate : AnyObject {
 class BirthdayListViewController: UIViewController, BirthdayListViewControllerDelegate {
     
     var contacts = [Contact]()
-    static var indexBetweenCells = 90
+    var currentSortDirection : SortDirection?
     
-    func addNewContact(currentContact: Contact) {
-        contacts.append(currentContact)
-        //TODO: updatedContacts.sorted { $0.name < $1.name} 
+    @IBOutlet weak var sortBtn: UIBarButtonItem!
+    
+    @IBAction func sortContacts(_ sender: UIBarButtonItem) {
+        
+        //TODO: Sorting
+        
+        switch currentSortDirection {
+        case nil:
+            contacts.sort(by: {$0.name < $1.name})
+            currentSortDirection = .up
+        case .down:
+            contacts.sort(by: {$0.name < $1.name})
+            currentSortDirection = .up
+        case .up:
+            contacts.sort(by: {$0.name > $1.name})
+            currentSortDirection = .down
+        }
+        redrawBirthdayTable()
+    }
+    
+    func redrawBirthdayTable() {
         for view in view.subviews {
             view.removeFromSuperview()
         }
         for index in contacts.indices {
             createBorderLine(index: index)
-            createPhotoImg(contacts[index].image, index: index)
+            createPhotoImg(contacts[index].imagePath, index: index)
             createNameLbl(contacts[index].name, index: index)
-            createDaysToLbl(dateOfBirth: contacts[index].birthDate, index: index)
-            createDayDescriptionLbl(dateOfBirth: contacts[index].birthDate, index: index)
+            createDayDescriptionLbls(dateOfBirth: contacts[index].birthDate, index: index)
         }
+    }
+    
+    func addNewContact(currentContact: Contact) {
+        contacts.append(currentContact)
+        //TODO: updatedContacts.sorted { $0.name < $1.name}
+        redrawBirthdayTable()
     }
     
     func createBorderLine(index: Int) {
@@ -37,54 +60,53 @@ class BirthdayListViewController: UIViewController, BirthdayListViewControllerDe
         self.view.addSubview(line)
     }
     
-    func createPhotoImg(_ contactImage: String?, index: Int) {
-        let image = UIImage(named: contactImage ?? "EmptyPhoto")
+    func createPhotoImg(_ contactImagePath: String?, index: Int) {
+        var image = UIImage(named: "EmptyPhoto")
+        if let imagePath = contactImagePath {
+            image = UIImage(contentsOfFile: imagePath)
+        }
         let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: 2, y: 100 + (90 * index), width: 80, height: 70)
+        imageView.frame = CGRect(x: 8, y: 100 + (90 * index), width: 70, height: 70)
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.layer.masksToBounds = false
+        imageView.clipsToBounds = true
         self.view.addSubview(imageView)
     }
     
     func createNameLbl(_ contactName: String?, index: Int) {
         if let name = contactName {
             let lblName = UILabel()
-            lblName.frame = CGRect(x: 80, y: 80 + (90 * index), width: 150, height: 50)
+            lblName.frame = CGRect(x: 83, y: 80 + (90 * index), width: 150, height: 50)
             lblName.text = name
             lblName.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
             self.view.addSubview(lblName)
         }
     }
     
-    func createDaysToLbl(dateOfBirth: Date?, index: Int) {
+    func createDayDescriptionLbls(dateOfBirth: Date?, index: Int) {
         if let dateOfBirth = dateOfBirth {
-            let lblDaysTo = UILabel()
-            let nameAttributes: [NSAttributedString.Key : Any] = [
-                .font: UIFont.systemFont(ofSize: 18, weight: .regular),
-                .foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            ]
-            let cal = Calendar.current
-            let today = cal.startOfDay(for: Date())
-            let date = cal.startOfDay(for: dateOfBirth)
-            let components = cal.dateComponents([.day, .month], from: date)
-            let nextDate = cal.nextDate(after: today, matching: components, matchingPolicy: .nextTimePreservingSmallerComponents)
-            if let daysTo = cal.dateComponents([.day], from: today, to: nextDate ?? today).day {
-                lblDaysTo.attributedText = NSAttributedString(string: "\(daysTo - 1) дней", attributes: nameAttributes)
-            }
-            lblDaysTo.frame = CGRect(x: 300, y: 80 + (90 * index), width: 150, height: 50)
-            self.view.addSubview(lblDaysTo)
-        }
-    }
-    
-    func createDayDescriptionLbl(dateOfBirth: Date?, index: Int) {
-        if let dateOfBirth = dateOfBirth {
-            let monthStr = Calendar.current.monthSymbols[Calendar.current.component(.month, from: dateOfBirth) - 1]
-            //let monthStr = Calendar.current.weekdaySymbols[Calendar.current.component(.weekday, from: dateOfBirth) - 1]
-            let lblDaysTo = UILabel()
-            let nameAttributes: [NSAttributedString.Key : Any] = [
+            let nextBirthDay = dateOfBirth.nextDateFromToday()
+            let dayNumberStr = Calendar.current.component(.day, from: nextBirthDay)
+            let nextDateDescriptionLbl = UILabel()
+            let attributesDayDescription: [NSAttributedString.Key : Any] = [
                 .font: UIFont.systemFont(ofSize: 14, weight: .regular),
                 .foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             ]
-            lblDaysTo.attributedText = NSAttributedString(string: "12 \(monthStr), в субботу исполнится 100 лет", attributes: nameAttributes)
-            lblDaysTo.frame = CGRect(x: 80, y: 107 + (90 * index), width: 350, height: 50)
+            
+            let age = dateOfBirth.ageIfSelfBirthday()
+            let weekday = nextBirthDay.weekdayName()
+            
+            nextDateDescriptionLbl.attributedText = NSAttributedString(string: "\(dayNumberStr) \(nextBirthDay.monthName()), \(weekday.preWordForWeekday()) \(weekday) исполнится \(age) \(age.afterWordForAge())", attributes: attributesDayDescription)
+            nextDateDescriptionLbl.frame = CGRect(x: 83, y: 107 + (90 * index), width: 350, height: 50)
+            self.view.addSubview(nextDateDescriptionLbl)
+            
+            let lblDaysTo = UILabel()
+            let attributesDaysTo: [NSAttributedString.Key : Any] = [
+                .font: UIFont.systemFont(ofSize: 18, weight: .regular),
+                .foregroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            ]
+            lblDaysTo.attributedText = NSAttributedString(string: "\(dateOfBirth.daysToNextThisDay())", attributes: attributesDaysTo)
+            lblDaysTo.frame = CGRect(x: 280, y: 80 + (90 * index), width: 150, height: 50)
             self.view.addSubview(lblDaysTo)
         }
     }
@@ -94,6 +116,10 @@ class BirthdayListViewController: UIViewController, BirthdayListViewControllerDe
         guard let editVC = segue.destination as? EditViewController else {return}
         editVC.contacts = contacts
         editVC.delegate = self
+    }
+    
+    deinit {
+        deleteAllImageFromContactImages()
     }
     
 }

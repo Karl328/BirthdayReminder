@@ -14,12 +14,14 @@ class EditViewController: UIViewController {
     @IBOutlet weak var txtAge: UITextField!
     @IBOutlet weak var txtGender: UITextField!
     @IBOutlet weak var txtInstagram: UITextField!
+    @IBOutlet weak var imgContactPhoto: UIImageView!
+    @IBOutlet weak var btnAdd: UIButton!
     
     weak var delegate: BirthdayListViewControllerDelegate?
     
     var contacts = [Contact]()
     
-    lazy var currentContact = Contact(identifier: contacts.count + 1)
+    lazy var currentContact = Contact(name: "", identifier: contacts.count + 1)
     
     let datePicker = UIDatePicker()
     let agePicker = UIPickerView()
@@ -35,6 +37,8 @@ class EditViewController: UIViewController {
         createDatePicker()
         createAgeViewPicker()
         createGenderViewPicker()
+        imgContactPhoto.layer.cornerRadius = imgContactPhoto.frame.size.width / 2
+        btnAdd.isEnabled = false
     }
     
     @IBAction func cancelAdding(_ sender: UIButton) {
@@ -60,6 +64,13 @@ class EditViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func choosePhoto(_ sender: UIButton) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
     @IBAction func showInstagramAlert(_ sender: UITextField) {
         let alert = UIAlertController(title: "Instagram", message: "Введите username Instagram", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [unowned self] _ in self.txtInstagram.text = alert.textFields?.first?.text
@@ -82,20 +93,27 @@ class EditViewController: UIViewController {
         }
     }
     
+    @IBAction func textEdited(_ sender: UITextField) {
+        if let nameText = txtName.text {
+            btnAdd.isEnabled = nameText != ""
+        }
+    }
+    
     func setText(firstValue: String, in textField: UITextField) {
         textField.text = firstValue
     }
     
     func createDatePicker() {
-        let toolbar = doneToolbarWith(action: #selector(donePressedBirthDate))
+        let toolbar = createDoneToolbarWith(action: #selector(donePressedBirthDate))
         txtBirthDate.inputAccessoryView = toolbar
         txtBirthDate.inputView = datePicker
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
+        datePicker.locale = Locale.init(identifier: "ru")
     }
     
     func createAgeViewPicker() {
-        let toolbar = doneToolbarWith(action: #selector(donePressed))
+        let toolbar = createDoneToolbarWith(action: #selector(donePressed))
         txtAge.inputAccessoryView = toolbar
         txtAge.inputView = agePicker
         agePicker.dataSource = self
@@ -104,7 +122,7 @@ class EditViewController: UIViewController {
     }
     
     func createGenderViewPicker() {
-        let toolbar = doneToolbarWith(action: #selector(donePressed))
+        let toolbar = createDoneToolbarWith(action: #selector(donePressed))
         txtGender.inputAccessoryView = toolbar
         txtGender.inputView = genderPicker
         genderPicker.dataSource = self
@@ -112,7 +130,7 @@ class EditViewController: UIViewController {
         genderPicker.tag = 2
     }
     
-    func doneToolbarWith(action: Selector) -> UIToolbar {
+    func createDoneToolbarWith(action: Selector) -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let btnDone = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: action)
@@ -126,6 +144,7 @@ class EditViewController: UIViewController {
     
     @objc func donePressedBirthDate() {
         let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "ru")
         formatter.dateStyle = .long
         formatter.timeStyle = .none
         txtBirthDate.text = formatter.string(from: datePicker.date)
@@ -162,5 +181,20 @@ extension EditViewController : UIPickerViewDelegate, UIPickerViewDataSource {
         case 2: txtGender.text = Gender.allCases[row].rawValue
         default: break
         }
+    }
+}
+
+extension EditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imgContactPhoto.image = image
+            currentContact.imagePath = saveImageToContactImages(image: image)
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
