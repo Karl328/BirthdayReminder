@@ -10,13 +10,12 @@ import Foundation
 struct Contact {
     
     var name: String
-    var birthDate: Date?
-    var age: Int?
+    var identifier: Int
+    var birthday: Birthday?
     var gender: Gender?
     var instagram: String?
     var imagePath: String?
-    var identifier: Int
-    
+  
 }
 
 enum Gender: String, CaseIterable {

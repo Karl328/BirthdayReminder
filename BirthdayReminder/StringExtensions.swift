@@ -8,7 +8,6 @@
 import Foundation
 
 extension String {
-    
     func preWordForWeekday() -> String {
         if self == "вторник" {
             return "во"

@@ -25,10 +25,10 @@ extension Date {
         return cal.weekdaySymbols[Calendar.current.component(.weekday, from: self) - 1].replacingOccurrences(of: "а", with: "у")
     }
     
-    func ageIfSelfBirthday() -> Int {
+    func currentAge() -> Int {
         let ageComponents = cal.dateComponents([.year], from: self, to: Date())
         let ageStr = ageComponents.year ?? 0
-        return ageStr + 1
+        return ageStr
     }
     
     func nextDateFromToday() -> Date {
@@ -41,10 +41,14 @@ extension Date {
         return cal.nextDate(after: today, matching: components, matchingPolicy: .nextTimePreservingSmallerComponents) ?? Date()
     }
     
-    func daysToNextThisDay() -> String {
+    func daysTo() -> Int {
         let today = cal.startOfDay(for: Date())
-        guard let daysTo = cal.dateComponents([.day], from: today, to: nextDateFromToday()).day else { return "" }
-        return dayDescription(dayCount: daysTo - 1)
+        guard let daysTo = cal.dateComponents([.day], from: today, to: nextDateFromToday()).day else { return 0 }
+        return daysTo - 1
+    }
+    
+    func daysToDescription() -> String {
+        return dayDescription(dayCount: self.daysTo())
     }
     
     func dayDescription(dayCount: Int) -> String {
@@ -59,6 +63,14 @@ extension Date {
         } else {
             return ("\(dayCount) дней")
         }
+    }
+    
+    func standartFormat() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "ru")
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter.string(from: self)
     }
     
 }

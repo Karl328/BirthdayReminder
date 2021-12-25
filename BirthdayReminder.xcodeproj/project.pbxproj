@@ -12,9 +12,10 @@
 		CB95C934277252CF0010730D /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95C933277252CF0010730D /* IntExtension.swift */; };
 		CB95C9362772578A0010730D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95C9352772578A0010730D /* StringExtensions.swift */; };
 		CBB046C72771024F00A836DD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB046C62771024F00A836DD /* DateExtension.swift */; };
-		CBB70BC52774E08B00BC89BA /* FileFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB70BC42774E08B00BC89BA /* FileFunctions.swift */; };
+		CBB70BC52774E08B00BC89BA /* ImageFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB70BC42774E08B00BC89BA /* ImageFunction.swift */; };
 		CBB70BC72775077800BC89BA /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB70BC62775077800BC89BA /* Other.swift */; };
 		CBDDAFE2276E19A300A5678D /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDAFE1276E19A300A5678D /* Contact.swift */; };
+		CBE9A26B27767330008C4EB3 /* Birthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE9A26A2776732F008C4EB3 /* Birthday.swift */; };
 		CBF53FC32768F879001F99D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC22768F879001F99D8 /* AppDelegate.swift */; };
 		CBF53FC52768F879001F99D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC42768F879001F99D8 /* SceneDelegate.swift */; };
 		CBF53FC72768F879001F99D8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF53FC62768F879001F99D8 /* SignInViewController.swift */; };
@@ -31,9 +32,10 @@
 		CB95C933277252CF0010730D /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		CB95C9352772578A0010730D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CBB046C62771024F00A836DD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		CBB70BC42774E08B00BC89BA /* FileFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileFunctions.swift; sourceTree = "<group>"; };
+		CBB70BC42774E08B00BC89BA /* ImageFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFunction.swift; sourceTree = "<group>"; };
 		CBB70BC62775077800BC89BA /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		CBDDAFE1276E19A300A5678D /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		CBE9A26A2776732F008C4EB3 /* Birthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birthday.swift; sourceTree = "<group>"; };
 		CBF53FBF2768F879001F99D8 /* BirthdayReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF53FC22768F879001F99D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF53FC42768F879001F99D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +99,8 @@
 			children = (
 				CB565386276A71BC00003D21 /* ViewControllers */,
 				CBDDAFE1276E19A300A5678D /* Contact.swift */,
-				CBB70BC42774E08B00BC89BA /* FileFunctions.swift */,
+				CBB70BC42774E08B00BC89BA /* ImageFunction.swift */,
+				CBE9A26A2776732F008C4EB3 /* Birthday.swift */,
 				CBB70BC62775077800BC89BA /* Other.swift */,
 				CB95C933277252CF0010730D /* IntExtension.swift */,
 				CB95C9352772578A0010730D /* StringExtensions.swift */,
@@ -196,9 +199,10 @@
 				CBF53FC72768F879001F99D8 /* SignInViewController.swift in Sources */,
 				CB565382276A67FB00003D21 /* UILabelExtensions.swift in Sources */,
 				CB95C934277252CF0010730D /* IntExtension.swift in Sources */,
+				CBE9A26B27767330008C4EB3 /* Birthday.swift in Sources */,
 				CBF53FC32768F879001F99D8 /* AppDelegate.swift in Sources */,
 				CBB046C72771024F00A836DD /* DateExtension.swift in Sources */,
-				CBB70BC52774E08B00BC89BA /* FileFunctions.swift in Sources */,
+				CBB70BC52774E08B00BC89BA /* ImageFunction.swift in Sources */,
 				CB95C9362772578A0010730D /* StringExtensions.swift in Sources */,
 				CBDDAFE2276E19A300A5678D /* Contact.swift in Sources */,
 				CBF53FD8276907CA001F99D8 /* BirthdayListViewController.swift in Sources */,

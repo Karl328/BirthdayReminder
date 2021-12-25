@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum SortDirection {
+enum SortDirection: String {
     
-    case up
-    case down
+    case up = "▲"
+    case down = "▼"
     
 }
