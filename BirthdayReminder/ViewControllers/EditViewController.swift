@@ -47,15 +47,6 @@ class EditViewController: UIViewController {
         }
     }
     
-    func getContactImageBy(path: String?) -> UIImage {
-        if let path = path {
-           let image = UIImage(contentsOfFile: path)
-           return image ?? getEmptyImage()
-        } else {
-            return getEmptyImage()
-        }
-    }
-    
     @IBAction func cancelAdding(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

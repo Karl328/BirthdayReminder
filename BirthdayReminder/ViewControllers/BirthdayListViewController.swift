@@ -136,7 +136,7 @@ class BirthdayListViewController: UIViewController, BirthdayListViewControllerDe
     }
     
     deinit {
-        deleteAllImageFromContactImages()
+        deleteImagesTempFolder()
     }
     
 }
