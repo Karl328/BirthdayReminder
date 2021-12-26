@@ -118,11 +118,11 @@ class BirthdayListViewController: UIViewController, BirthdayListViewControllerDe
             lblDaysTo.translatesAutoresizingMaskIntoConstraints = false
             lblNextBirthday.translatesAutoresizingMaskIntoConstraints = false
             var constraints = [NSLayoutConstraint]()
-            constraints.append(lblDaysTo.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20))
+            constraints.append(lblDaysTo.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20))
             constraints.append(lblDaysTo.bottomAnchor.constraint(equalTo: viewLine.bottomAnchor, constant: -60))
-            constraints.append(lblNextBirthday.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20))
+            constraints.append(lblNextBirthday.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20))
             constraints.append(lblNextBirthday.bottomAnchor.constraint(equalTo: viewLine.bottomAnchor, constant: -40))
-            constraints.append(lblNextBirthday.leftAnchor.constraint(equalTo: imgPhoto.rightAnchor, constant: 5))
+            constraints.append(lblNextBirthday.leadingAnchor.constraint(equalTo: imgPhoto.trailingAnchor, constant: 5))
             lblNextBirthday.adjustsFontSizeToFitWidth = true
             NSLayoutConstraint.activate(constraints)
         }
