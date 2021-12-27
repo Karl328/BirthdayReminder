@@ -59,7 +59,7 @@ class BirthdayListViewController: UIViewController, BirthdayListViewControllerDe
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "EditVC") as? EditViewController else {return}
         guard let identifier = gesture.view?.tag, let chosenContact = contacts.first(where: {$0.identifier == identifier}) else {return}
-        vc.currentContact = chosenContact
+        vc.changedContact = chosenContact
         vc.delegate = self
         present(vc, animated: true)
     }
@@ -131,7 +131,6 @@ class BirthdayListViewController: UIViewController, BirthdayListViewControllerDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ShowEditVC" else {return}
         guard let editVC = segue.destination as? EditViewController else {return}
-        editVC.lastIdentifier = contacts.count + 1
         editVC.delegate = self
     }
     

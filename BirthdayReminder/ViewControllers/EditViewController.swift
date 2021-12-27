@@ -17,12 +17,11 @@ class EditViewController: UIViewController {
     @IBOutlet weak var imgPhoto: UIImageView!
     @IBOutlet weak var btnAdd: UIButton!
     
-    let datePicker = UIDatePicker()
-    
     weak var delegate: BirthdayListViewControllerDelegate?
     
-    var lastIdentifier: Int?
-    lazy var currentContact = Contact(name: "", identifier: lastIdentifier ?? 0 + 1)
+    let datePicker = UIDatePicker()
+
+    var changedContact: Contact?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +36,13 @@ class EditViewController: UIViewController {
         imgPhoto.layer.cornerRadius = imgPhoto.frame.size.width / 2
         btnAdd.isEnabled = false
         
-        if currentContact.name != "" {
-            imgPhoto.image = getContactImageBy(path: currentContact.imagePath)
-            txtName.text = currentContact.name
-            txtBirthDate.text = currentContact.birthday?.date.standartFormat()
-            txtAge.text = String(currentContact.birthday?.age ?? 0)
-            txtGender.text = currentContact.gender?.rawValue
-            txtInstagram.text = currentContact.instagram
+        if let changedContact = changedContact {
+            imgPhoto.image = getContactImageBy(path: changedContact.imagePath)
+            txtName.text = changedContact.name
+            txtBirthDate.text = changedContact.birthday?.date.standartFormat()
+            txtAge.text = String(changedContact.birthday?.age ?? 0)
+            txtGender.text = changedContact.gender?.rawValue
+            txtInstagram.text = changedContact.instagram
         }
     }
     
@@ -52,20 +51,24 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func finishEditing(_ sender: UIButton) {
+        
+        var newContact = changedContact ?? Contact()
+     
         if let image = imgPhoto.image, image != getEmptyImage() {
-            currentContact.imagePath = saveImageToContactImages(image: image)
+            newContact.imagePath = saveImageToContactImages(image: image)
         }
         if let nameText = txtName.text {
-            currentContact.name = nameText
+            newContact.name = nameText
         }
+        newContact.birthday = Birthday(dateOfBirth: datePicker.date)
         if let genderText = txtGender.text {
-            currentContact.gender = getElementByRawValue(rawValue: genderText)
+            newContact.gender = getElementByRawValue(rawValue: genderText)
         }
         if let instagramText = txtInstagram.text {
-            currentContact.instagram = instagramText
+            newContact.instagram = instagramText
         }
         if let delegateVC = delegate {
-            delegateVC.addNewContact(changedContact: currentContact)
+            delegateVC.addNewContact(changedContact: newContact)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -144,12 +147,11 @@ class EditViewController: UIViewController {
     }
     
     @objc func datePickerDonePressed() {
-        txtBirthDate.text = datePicker.date.standartFormat()
-        currentContact.birthday = Birthday(dateOfBirth: datePicker.date)
-        if let age = currentContact.birthday?.age {
-            txtAge.text = String(age)
-            setAddButonEnabled()
-        }
+        let birthDate = datePicker.date
+        txtBirthDate.text = birthDate.standartFormat()
+        //currentContact.birthday = Birthday(dateOfBirth: datePicker.date)
+        txtAge.text = String(birthDate.currentAge())
+        setAddButonEnabled()
         self.view.endEditing(true)
     }
     

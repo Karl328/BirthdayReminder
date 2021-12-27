@@ -23,17 +23,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AE40AEB9-6D07-46B9-9142-3654F4DE9614"
+            uuid = "1D0DBCBB-24F7-43AE-BCEC-626F503840B2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BirthdayReminder/ImageFunction.swift"
+            filePath = "BirthdayReminder/ViewControllers/EditViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "saveImageToContactImages(image:)"
-            landmarkType = "9">
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "finishEditing(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
