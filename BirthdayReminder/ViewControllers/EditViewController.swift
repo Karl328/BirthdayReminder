@@ -82,10 +82,10 @@ class EditViewController: UIViewController {
     
     @IBAction func showInstagramAlert(_ sender: UITextField) {
         let alert = UIAlertController(title: "Instagram", message: "Введите username Instagram", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in self?.txtInstagram.text = alert.textFields?.first?.text
-            self?.setAddButonEnabled()
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak txtInstagram, btnAdd] _ in txtInstagram?.text = alert.textFields?.first?.text
+            btnAdd?.isEnabled = true
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] _ in self?.view.endEditing(true)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak view] _ in view?.endEditing(true)
         }))
         alert.addTextField(configurationHandler: nil)
         self.present(alert, animated: true)
@@ -107,10 +107,6 @@ class EditViewController: UIViewController {
         if let nameText = txtName.text {
             btnAdd.isEnabled = nameText != ""
         }
-    }
-    
-    func setAddButonEnabled() {
-        btnAdd.isEnabled = true
     }
     
     func createDatePicker() {
@@ -143,15 +139,14 @@ class EditViewController: UIViewController {
     
     @objc func pickerDonePressed() {
         self.view.endEditing(true)
-        setAddButonEnabled()
+        btnAdd.isEnabled = true
     }
     
     @objc func datePickerDonePressed() {
         let birthDate = datePicker.date
         txtBirthDate.text = birthDate.standartFormat()
-        //currentContact.birthday = Birthday(dateOfBirth: datePicker.date)
         txtAge.text = String(birthDate.currentAge())
-        setAddButonEnabled()
+        btnAdd.isEnabled = true
         self.view.endEditing(true)
     }
     
